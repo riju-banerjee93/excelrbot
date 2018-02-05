@@ -133,7 +133,7 @@ def makeWebhookResult(req):
              "MSP": sheet.acell("K15").value, "Internet of Things": sheet.acell("K16").value,
              "Amazon Web Servies": sheet.acell("K17").value}
 
-        speech = "Our next starting dates at different locations are " + z[d] + " ."
+        speech = "Our next starting dates at different locations are " +z[d]+ " ."
 
     elif req.get("result").get("action") == "followup.course.details":
         d = req.get("result").get("contexts")[0].get("parameters").get("course")
@@ -266,6 +266,24 @@ def makeWebhookResult(req):
              "Amazon Web Servies": sheet.acell("T17").value}
 
         speech = " " + y[b]
+
+    elif req.get("result").get("action") == "starting.date":
+        b = req.get("result").get("parameters").get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+
+        z = {"DATA SCIENCE": sheet.acell("K2").value, "TABLEAU": sheet.acell("K3").value,
+             "BIG DATA HADOOP": sheet.acell("K4").value,
+             "ADVANCED ANALYTICS": sheet.acell("K5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("K6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("K7").value,
+             "ITIL FOUNDATION": sheet.acell("K8").value, "ITIL INTERMEDIATE": sheet.acell("K9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("K10").value, "PRINCE 2 PRACTITIONER": sheet.acell("K11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("K12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("K13").value, "CAPM": sheet.acell("K14").value,
+             "MSP": sheet.acell("K15").value, "Internet of Things": sheet.acell("K16").value,
+             "Amazon Web Servies": sheet.acell("K17").value}
+
+        speech = "Our next starting dates at different locations are " + z[b] + " ."
+
 
 
 
