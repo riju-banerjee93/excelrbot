@@ -64,7 +64,7 @@ def makeWebhookResult(req):
         c = req.get("result").get("parameters").get("course")
         sheet = client.open("sheetdemo").worksheet("Sheet1")
 
-        y = {"DATA SCIENCE": sheet.acell("K2").value, "TABLEAU": sheet.acell("K3").value,
+        z = {"DATA SCIENCE": sheet.acell("K2").value, "TABLEAU": sheet.acell("K3").value,
              "BIG DATA HADOOP": sheet.acell("K4").value,
              "ADVANCED ANALYTICS": sheet.acell("K5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("K6").value,
              "AGILE CERTIFIED PROFESSIONAL": sheet.acell("K7").value,
@@ -75,7 +75,7 @@ def makeWebhookResult(req):
              "MSP": sheet.acell("K15").value, "Internet of Things": sheet.acell("K16").value,
              "Amazon Web Servies": sheet.acell("K17").value}
 
-        speech = "Our nrxt starting dates At different location are " +y[c]
+        speech = "Our next starting dates at different locations are " +z[c]+ " ."
 
 
 
