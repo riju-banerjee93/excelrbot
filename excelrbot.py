@@ -92,7 +92,7 @@ def makeWebhookResult(req):
              "MSP": sheet.acell("F15").value, "Internet of Things": sheet.acell("F16").value,
              "Amazon Web Servies": sheet.acell("F17").value}
 
-        speech = "Its Rs. " + y[d] + " plus taxes(18% GST)"
+        speech = "Its Rs. " +y[d]+ " plus taxes(18% GST)"
 
 
 
