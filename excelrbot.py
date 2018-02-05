@@ -77,22 +77,7 @@ def makeWebhookResult(req):
 
         speech = "Our next starting dates at different locations are "+z[c]+ " ."
 
-    elif req.get("result").get("contexts")[0].get("name") == "price":
-        d = req.get("result").get("contexts")[0].get("course")
-        sheet = client.open("sheetdemo").worksheet("Sheet1")
 
-        y = {"DATA SCIENCE": sheet.acell("F2").value, "TABLEAU": sheet.acell("F3").value,
-             "BIG DATA HADOOP": sheet.acell("F4").value,
-             "ADVANCED ANALYTICS": sheet.acell("F5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("F6").value,
-             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("F7").value,
-             "ITIL FOUNDATION": sheet.acell("F8").value, "ITIL INTERMEDIATE": sheet.acell("F9").value,
-             "PRINCE 2 FOUNDATION": sheet.acell("F10").value, "PRINCE 2 PRACTITIONER": sheet.acell("F11").value,
-             "LEAN SIX SIGMA GREEN BELT": sheet.acell("F12").value,
-             "LEAN SIX SIGMA BLACK BELT": sheet.acell("F13").value, "CAPM": sheet.acell("F14").value,
-             "MSP": sheet.acell("F15").value, "Internet of Things": sheet.acell("F16").value,
-             "Amazon Web Servies": sheet.acell("F17").value}
-
-        speech = "Its Rs. " +y[d]+ " plus taxes(18% GST)"
 
     elif req.get("result").get("action") == "user.query.price":
         d = req.get("result").get("contexts")[0].get("course")
@@ -127,6 +112,23 @@ def makeWebhookResult(req):
              "Amazon Web Servies": sheet.acell("T17").value}
 
         speech = " "+y[d]
+
+    elif req.get("result").get("action") == "price.discount":
+        d = req.get("result").get("contexts")[2].get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+
+        y = {"DATA SCIENCE": sheet.acell("N2").value, "TABLEAU": sheet.acell("N3").value,
+             "BIG DATA HADOOP": sheet.acell("N4").value,
+             "ADVANCED ANALYTICS": sheet.acell("N5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("N6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("N7").value,
+             "ITIL FOUNDATION": sheet.acell("N8").value, "ITIL INTERMEDIATE": sheet.acell("N9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("N10").value, "PRINCE 2 PRACTITIONER": sheet.acell("N11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("N12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("N13").value, "CAPM": sheet.acell("N14").value,
+             "MSP": sheet.acell("N15").value, "Internet of Things": sheet.acell("N16").value,
+             "Amazon Web Servies": sheet.acell("N17").value}
+
+        speech = " " + y[d]
 
 
 
