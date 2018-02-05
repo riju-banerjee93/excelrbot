@@ -34,6 +34,7 @@ def makeWebhookResult(req):
     if req.get("result").get("action") == "user.query":
 
         a = req.get("result").get("parameters").get("course")
+        print(a)
         sheet = client.open("sheetdemo").worksheet("Sheet1")
 
         x = {"DATA SCIENCE": sheet.range('B2:J2'), "TABLEAU": sheet.range('B3:J3'),"BIG DATA HADOOP":sheet.range('B4:J4'),"ADVANCED ANALYTICS":sheet.range('B5:J5'),
@@ -100,6 +101,7 @@ def makeWebhookResult(req):
     elif req.get("result").get("action") == "user.query.trainer":
         d = req.get("result").get("contexts")[0].get("course")
         d = d.upper()
+        print(d)
         sheet = client.open("sheetdemo").worksheet("Sheet1")
 
         y = {"DATA SCIENCE": sheet.acell("T2").value, "TABLEAU": sheet.acell("T3").value,
