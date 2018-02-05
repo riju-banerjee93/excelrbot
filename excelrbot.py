@@ -82,7 +82,7 @@ def makeWebhookResult(req):
 
     elif req.get("result").get("action") == "user.query.price":
         d = req.get("result").get("contexts")[0].get("course")
-        d = d.upper()
+        print(d+"2")
         sheet = client.open("sheetdemo").worksheet("Sheet1")
 
         y = {"DATA SCIENCE": sheet.acell("F2").value, "TABLEAU": sheet.acell("F3").value,
