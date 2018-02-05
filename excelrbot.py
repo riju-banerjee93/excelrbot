@@ -100,7 +100,7 @@ def makeWebhookResult(req):
         speech = "Its Rs. " +y[d]+ " plus taxes(18% GST)"
 
     elif req.get("result").get("action") == "user.query.trainer":
-        d = req.get("result").get("contexts")[0].get("course")
+        d = req.get("result").get("contexts")[0].get("parameters").get("course")
         d = d.upper()
         print(d)
         sheet = client.open("sheetdemo").worksheet("Sheet1")
@@ -119,7 +119,7 @@ def makeWebhookResult(req):
         speech = " "+y[d]
 
     elif req.get("result").get("action") == "price.discount":
-        d = req.get("result").get("contexts")[0].get("course")
+        d = req.get("result").get("contexts")[0].get("parameters").get("course")
         d = d.upper()
         sheet = client.open("sheetdemo").worksheet("Sheet1")
 
