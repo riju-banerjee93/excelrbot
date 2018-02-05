@@ -77,7 +77,7 @@ def makeWebhookResult(req):
 
         speech = "Our next starting dates at different locations are "+z[c]+ " ."
 
-    elif req.get("result").get("contexts").get("name") == "price":
+    elif req.get("result").get("contexts")[0].get("name") == "price":
         d = req.get("result").get("contexts").get("course")
         sheet = client.open("sheetdemo").worksheet("Sheet1")
 
