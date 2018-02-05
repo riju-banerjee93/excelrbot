@@ -75,7 +75,26 @@ def makeWebhookResult(req):
              "MSP": sheet.acell("K15").value, "Internet of Things": sheet.acell("K16").value,
              "Amazon Web Servies": sheet.acell("K17").value}
 
-        speech = "Our next starting dates at different locations are " +z[c]+ " ."
+        speech = "Our next starting dates at different locations are "+z[c]+ " ."
+
+    elif req.get("result").get("contexts").get("name") == "price":
+        d = req.get("result").get("contexts").get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+
+        y = {"DATA SCIENCE": sheet.acell("F2").value, "TABLEAU": sheet.acell("F3").value,
+             "BIG DATA HADOOP": sheet.acell("F4").value,
+             "ADVANCED ANALYTICS": sheet.acell("F5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("F6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("F7").value,
+             "ITIL FOUNDATION": sheet.acell("F8").value, "ITIL INTERMEDIATE": sheet.acell("F9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("F10").value, "PRINCE 2 PRACTITIONER": sheet.acell("F11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("F12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("F13").value, "CAPM": sheet.acell("F14").value,
+             "MSP": sheet.acell("F15").value, "Internet of Things": sheet.acell("F16").value,
+             "Amazon Web Servies": sheet.acell("F17").value}
+
+        speech = "Its Rs. " + y[d] + " plus taxes(18% GST)"
+
+
 
 
 
