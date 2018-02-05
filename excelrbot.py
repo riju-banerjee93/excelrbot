@@ -181,7 +181,7 @@ def makeWebhookResult(req):
              "MSP": sheet.acell("S15").value, "Internet of Things": sheet.acell("S16").value,
              "Amazon Web Servies": sheet.acell("S17").value}
 
-        speech = z[d]
+        speech =  ""+z[d]
 
 
 
