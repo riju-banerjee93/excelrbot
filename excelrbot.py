@@ -61,45 +61,13 @@ def makeWebhookResult(req):
 
         speech = "Its Rs. "+y[b]+ " plus taxes(18% GST)"
 
-    elif req.get("result").get("action") == "starting.date":
-        c = req.get("result").get("parameters").get("course")
-        sheet = client.open("sheetdemo").worksheet("Sheet1")
-
-        z = {"DATA SCIENCE": sheet.acell("K2").value, "TABLEAU": sheet.acell("K3").value,
-             "BIG DATA HADOOP": sheet.acell("K4").value,
-             "ADVANCED ANALYTICS": sheet.acell("K5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("K6").value,
-             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("K7").value,
-             "ITIL FOUNDATION": sheet.acell("K8").value, "ITIL INTERMEDIATE": sheet.acell("K9").value,
-             "PRINCE 2 FOUNDATION": sheet.acell("K10").value, "PRINCE 2 PRACTITIONER": sheet.acell("K11").value,
-             "LEAN SIX SIGMA GREEN BELT": sheet.acell("K12").value,
-             "LEAN SIX SIGMA BLACK BELT": sheet.acell("K13").value, "CAPM": sheet.acell("K14").value,
-             "MSP": sheet.acell("K15").value, "Internet of Things": sheet.acell("K16").value,
-             "Amazon Web Servies": sheet.acell("K17").value}
-
-        speech = "Our next starting dates at different locations are "+z[c]+ " ."
 
 
 
-    elif req.get("result").get("action") == "user.query.price":
-        d = req.get("result").get("contexts")[0].get("parameters").get("course")
-        print(d)
 
-        sheet = client.open("sheetdemo").worksheet("Sheet1")
 
-        y = {"DATA SCIENCE": sheet.acell("F2").value, "TABLEAU": sheet.acell("F3").value,
-             "BIG DATA HADOOP": sheet.acell("F4").value,
-             "ADVANCED ANALYTICS": sheet.acell("F5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("F6").value,
-             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("F7").value,
-             "ITIL FOUNDATION": sheet.acell("F8").value, "ITIL INTERMEDIATE": sheet.acell("F9").value,
-             "PRINCE 2 FOUNDATION": sheet.acell("F10").value, "PRINCE 2 PRACTITIONER": sheet.acell("F11").value,
-             "LEAN SIX SIGMA GREEN BELT": sheet.acell("F12").value,
-             "LEAN SIX SIGMA BLACK BELT": sheet.acell("F13").value, "CAPM": sheet.acell("F14").value,
-             "MSP": sheet.acell("F15").value, "Internet of Things": sheet.acell("F16").value,
-             "Amazon Web Servies": sheet.acell("F17").value}
 
-        speech = "Its Rs. " +y[d]+ " plus taxes(18% GST)"
-
-    elif req.get("result").get("action") == "user.query.trainer":
+    elif req.get("result").get("action") == "followup.trainer":
         d = req.get("result").get("contexts")[0].get("parameters").get("course")
         print(d)
         sheet = client.open("sheetdemo").worksheet("Sheet1")
@@ -117,7 +85,7 @@ def makeWebhookResult(req):
 
         speech = " "+y[d]
 
-    elif req.get("result").get("action") == "price.discount":
+    elif req.get("result").get("action") == "followup.discount":
         d = req.get("result").get("contexts")[0].get("parameters").get("course")
         sheet = client.open("sheetdemo").worksheet("Sheet1")
 
@@ -133,6 +101,88 @@ def makeWebhookResult(req):
              "Amazon Web Servies": sheet.acell("N17").value}
 
         speech = " " +y[d]
+
+    elif req.get("result").get("action") == "user.query.eligibility":
+        d = req.get("result").get("contexts")[0].get("parameters").get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+
+        y = {"DATA SCIENCE": sheet.acell("O2").value, "TABLEAU": sheet.acell("O3").value,
+             "BIG DATA HADOOP": sheet.acell("O4").value,
+             "ADVANCED ANALYTICS": sheet.acell("O5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("O6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("O7").value,
+             "ITIL FOUNDATION": sheet.acell("O8").value, "ITIL INTERMEDIATE": sheet.acell("O9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("O10").value, "PRINCE 2 PRACTITIONER": sheet.acell("O11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("O12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("O13").value, "CAPM": sheet.acell("O14").value,
+             "MSP": sheet.acell("O15").value, "Internet of Things": sheet.acell("O16").value,
+             "Amazon Web Servies": sheet.acell("O17").value}
+
+        speech = y[d]
+
+    elif req.get("result").get("action") == "followup.starting.date":
+        d = req.get("result").get("contexts")[0].get("parameters").get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+        z = {"DATA SCIENCE": sheet.acell("K2").value, "TABLEAU": sheet.acell("K3").value,
+             "BIG DATA HADOOP": sheet.acell("K4").value,
+             "ADVANCED ANALYTICS": sheet.acell("K5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("K6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("K7").value,
+             "ITIL FOUNDATION": sheet.acell("K8").value, "ITIL INTERMEDIATE": sheet.acell("K9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("K10").value, "PRINCE 2 PRACTITIONER": sheet.acell("K11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("K12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("K13").value, "CAPM": sheet.acell("K14").value,
+             "MSP": sheet.acell("K15").value, "Internet of Things": sheet.acell("K16").value,
+             "Amazon Web Servies": sheet.acell("K17").value}
+
+        speech = "Our next starting dates at different locations are " + z[d] + " ."
+
+    elif req.get("result").get("action") == "followup.course.details":
+        d = req.get("result").get("contexts")[0].get("parameters").get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+        z = {"DATA SCIENCE": sheet.acell("L2").value, "TABLEAU": sheet.acell("L3").value,
+             "BIG DATA HADOOP": sheet.acell("L4").value,
+             "ADVANCED ANALYTICS": sheet.acell("L5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("L6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("L7").value,
+             "ITIL FOUNDATION": sheet.acell("L8").value, "ITIL INTERMEDIATE": sheet.acell("L9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("L10").value, "PRINCE 2 PRACTITIONER": sheet.acell("L11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("L12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("L13").value, "CAPM": sheet.acell("L14").value,
+             "MSP": sheet.acell("L15").value, "Internet of Things": sheet.acell("L16").value,
+             "Amazon Web Servies": sheet.acell("L17").value}
+
+        speech = z[d]
+
+    elif req.get("result").get("action") == "followup.certification":
+        d = req.get("result").get("contexts")[0].get("parameters").get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+        z = {"DATA SCIENCE": sheet.acell("G2").value, "TABLEAU": sheet.acell("G3").value,
+             "BIG DATA HADOOP": sheet.acell("G4").value,
+             "ADVANCED ANALYTICS": sheet.acell("G5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("G6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("G7").value,
+             "ITIL FOUNDATION": sheet.acell("G8").value, "ITIL INTERMEDIATE": sheet.acell("G9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("G10").value, "PRINCE 2 PRACTITIONER": sheet.acell("G11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("G12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("G13").value, "CAPM": sheet.acell("G14").value,
+             "MSP": sheet.acell("G15").value, "Internet of Things": sheet.acell("G16").value,
+             "Amazon Web Servies": sheet.acell("G17").value}
+
+        speech = z[d]
+
+    elif req.get("result").get("action") == "followup.prerequisites":
+        d = req.get("result").get("contexts")[0].get("parameters").get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+        z = {"DATA SCIENCE": sheet.acell("S2").value, "TABLEAU": sheet.acell("S3").value,
+             "BIG DATA HADOOP": sheet.acell("S4").value,
+             "ADVANCED ANALYTICS": sheet.acell("S5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("S6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("S7").value,
+             "ITIL FOUNDATION": sheet.acell("S8").value, "ITIL INTERMEDIATE": sheet.acell("S9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("S10").value, "PRINCE 2 PRACTITIONER": sheet.acell("S11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("S12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("S13").value, "CAPM": sheet.acell("S14").value,
+             "MSP": sheet.acell("S15").value, "Internet of Things": sheet.acell("S16").value,
+             "Amazon Web Servies": sheet.acell("S17").value}
+
+        speech = z[d]
+
 
 
 
