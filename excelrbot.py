@@ -101,7 +101,6 @@ def makeWebhookResult(req):
 
     elif req.get("result").get("action") == "user.query.trainer":
         d = req.get("result").get("contexts")[0].get("parameters").get("course")
-        d = d.upper()
         print(d)
         sheet = client.open("sheetdemo").worksheet("Sheet1")
 
@@ -120,7 +119,6 @@ def makeWebhookResult(req):
 
     elif req.get("result").get("action") == "price.discount":
         d = req.get("result").get("contexts")[0].get("parameters").get("course")
-        d = d.upper()
         sheet = client.open("sheetdemo").worksheet("Sheet1")
 
         y = {"DATA SCIENCE": sheet.acell("N2").value, "TABLEAU": sheet.acell("N3").value,
@@ -134,7 +132,7 @@ def makeWebhookResult(req):
              "MSP": sheet.acell("N15").value, "Internet of Things": sheet.acell("N16").value,
              "Amazon Web Servies": sheet.acell("N17").value}
 
-        speech = " " + y[d]
+        speech = " " +y[d]
 
 
 
