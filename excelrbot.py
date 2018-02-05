@@ -94,6 +94,41 @@ def makeWebhookResult(req):
 
         speech = "Its Rs. " +y[d]+ " plus taxes(18% GST)"
 
+    elif req.get("result").get("contexts")["price"] == True:
+        d = req.get("result").get("contexts")["price"].get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+
+        y = {"DATA SCIENCE": sheet.acell("F2").value, "TABLEAU": sheet.acell("F3").value,
+             "BIG DATA HADOOP": sheet.acell("F4").value,
+             "ADVANCED ANALYTICS": sheet.acell("F5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("F6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("F7").value,
+             "ITIL FOUNDATION": sheet.acell("F8").value, "ITIL INTERMEDIATE": sheet.acell("F9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("F10").value, "PRINCE 2 PRACTITIONER": sheet.acell("F11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("F12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("F13").value, "CAPM": sheet.acell("F14").value,
+             "MSP": sheet.acell("F15").value, "Internet of Things": sheet.acell("F16").value,
+             "Amazon Web Servies": sheet.acell("F17").value}
+
+        speech = "Its Rs. " +y[d]+ " plus taxes(18% GST)"
+
+    elif req.get("result").get("contexts")["trainer"] == True:
+        d = req.get("result").get("contexts")["trainer"].get("course")
+        sheet = client.open("sheetdemo").worksheet("Sheet1")
+
+        y = {"DATA SCIENCE": sheet.acell("T2").value, "TABLEAU": sheet.acell("T3").value,
+             "BIG DATA HADOOP": sheet.acell("T4").value,
+             "ADVANCED ANALYTICS": sheet.acell("T5").value, "PROJECT MANAGEMENT PROFESSIONAL": sheet.acell("T6").value,
+             "AGILE CERTIFIED PROFESSIONAL": sheet.acell("T7").value,
+             "ITIL FOUNDATION": sheet.acell("T8").value, "ITIL INTERMEDIATE": sheet.acell("T9").value,
+             "PRINCE 2 FOUNDATION": sheet.acell("T10").value, "PRINCE 2 PRACTITIONER": sheet.acell("T11").value,
+             "LEAN SIX SIGMA GREEN BELT": sheet.acell("T12").value,
+             "LEAN SIX SIGMA BLACK BELT": sheet.acell("T13").value, "CAPM": sheet.acell("T14").value,
+             "MSP": sheet.acell("T15").value, "Internet of Things": sheet.acell("T16").value,
+             "Amazon Web Servies": sheet.acell("T17").value}
+
+        speech = y[d]
+
+
 
 
 
